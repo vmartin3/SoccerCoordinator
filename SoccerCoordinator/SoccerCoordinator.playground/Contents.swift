@@ -42,7 +42,6 @@ func divideTeamsEqually (teamData team:[[String:NSObject]])
     {
         if player["Experience"] == true{
             experiencedCounter += 1
-            
             //This switch statement switches on the experiencedCounter so that an experienced player is added to one team at a time until there are no more experienced players
             switch (experiencedCounter){
             case 1: dragons.append(player)
@@ -90,8 +89,13 @@ func resetCounter(var counterType counter:Int) -> Int
 func sendLetter(teamDetails teamName:[[String:NSObject]], teamNameText: String)
 {
     for player in teamName{
-        print("Dear \(player["Parents"]!), \n Congratulations your child, \(player["Name"]!) has been placed on the \(teamNameText). We are so excited to have them on the team. See below for the practice schedule specific to their team: \n  Sharks - March 17 \nPlease reach out to the coach with any questions. Best of luck this season! \n\n Best, \n Soccer Administration \n--")
+        switch(teamNameText){
+            case "Sharks":print("Dear \(player["Parents"]!), \n Congratulations your child, \(player["Name"]!) has been placed on the \(teamNameText). We are so excited to have them on the team. See below for the practice schedule specific to their team: \n  Sharks - March 17, 3pm\nPlease reach out to the coach with any questions. Best of luck this season! \n\n Best, \n Soccer Administration \n--")
+            case "Dragons": print("Dear \(player["Parents"]!), \n Congratulations your child, \(player["Name"]!) has been placed on the \(teamNameText). We are so excited to have them on the team. See below for the practice schedule specific to their team: \n  Dragons - March 17, 1pm\nPlease reach out to the coach with any questions. Best of luck this season! \n\n Best, \n Soccer Administration \n--")
+            case "Raptors": print("Dear \(player["Parents"]!), \n Congratulations your child, \(player["Name"]!) has been placed on the \(teamNameText). We are so excited to have them on the team. See below for the practice schedule specific to their team: \n  Raptors - March 18, 1pm\nPlease reach out to the coach with any questions. Best of luck this season! \n\n Best, \n Soccer Administration \n--")
+        default: "No Team of This Name Found"
     }
+}
 }
 
 //Prints a divider between team letters
